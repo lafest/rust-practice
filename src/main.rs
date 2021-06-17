@@ -9,11 +9,15 @@ fn main() {
   println!("fibonacci_number: {} / fibonacci({}): {}", fibonacci_number, fibonacci_number, fibonacci(fibonacci_number));
 
   let rect1 = Rectangle { length: 50, width: 30 };
+  let rect2 = Rectangle { length: 40, width: 10 };
+  let rect3 = Rectangle { length: 45, width: 60 };
   println!("rect1 is {:#?}", rect1);
   println!(
     "The area of the rectangle is {} square pixels",
-    area(&rect1) // 이 함수의 목적은 소유권을 가져가는것이 아닌 빌림이기 때문에 참조자를 넘겨줌
+    rect1.area()
   );
+  println!("can rect1 hold rect2? {}", rect1.can_hold(&rect2));
+  println!("can rect1 hold rect3? {}", rect1.can_hold(&rect3));
 }
 
 fn celsius_to_fahrenheit(celsius: f64) -> f64 {
@@ -40,6 +44,12 @@ struct Rectangle {
   width: i32,
 }
 
-fn area(rectangle: &Rectangle) -> i32 {
-  rectangle.length * rectangle.width
+impl Rectangle {
+  fn area(&self) -> i32 {
+    self.length * self.width
+  }
+
+  fn can_hold(&self, other: &Rectangle) -> bool {
+    self.length > other.length && self.width > other.width
+  }
 }
