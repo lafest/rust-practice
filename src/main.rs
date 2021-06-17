@@ -9,15 +9,21 @@ fn main() {
   println!("fibonacci_number: {} / fibonacci({}): {}", fibonacci_number, fibonacci_number, fibonacci(fibonacci_number));
 
   let rect1 = Rectangle { length: 50, width: 30 };
-  let rect2 = Rectangle { length: 40, width: 10 };
-  let rect3 = Rectangle { length: 45, width: 60 };
   println!("rect1 is {:#?}", rect1);
   println!(
     "The area of the rectangle is {} square pixels",
     rect1.area()
   );
+
+  let rect2 = Rectangle { length: 40, width: 10 };
   println!("can rect1 hold rect2? {}", rect1.can_hold(&rect2));
+
+  let rect3 = Rectangle { length: 45, width: 60 };
   println!("can rect1 hold rect3? {}", rect1.can_hold(&rect3));
+
+  let sq = Rectangle::square(3);
+  println!("sq length: {} width: {}", sq.length, sq.width);
+
 }
 
 fn celsius_to_fahrenheit(celsius: f64) -> f64 {
@@ -51,5 +57,9 @@ impl Rectangle {
 
   fn can_hold(&self, other: &Rectangle) -> bool {
     self.length > other.length && self.width > other.width
+  }
+
+  fn square(size: i32) -> Rectangle {
+    Rectangle { length: size, width: size }
   }
 }
