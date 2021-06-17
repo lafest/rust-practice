@@ -9,6 +9,7 @@ fn main() {
   println!("fibonacci_number: {} / fibonacci({}): {}", fibonacci_number, fibonacci_number, fibonacci(fibonacci_number));
 
   let rect1 = Rectangle { length: 50, width: 30 };
+  println!("rect1 is {:#?}", rect1);
   println!(
     "The area of the rectangle is {} square pixels",
     area(&rect1) // 이 함수의 목적은 소유권을 가져가는것이 아닌 빌림이기 때문에 참조자를 넘겨줌
@@ -33,6 +34,7 @@ fn fibonacci(n: i64) -> i64 {
   }
 }
 
+#[derive(Debug)] // debug포맷을 사용하고자 하면 명시적 언급이 필요
 struct Rectangle {
   length: i32,
   width: i32,
