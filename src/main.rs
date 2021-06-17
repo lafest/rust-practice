@@ -8,10 +8,10 @@ fn main() {
   let fibonacci_number = 7;
   println!("fibonacci_number: {} / fibonacci({}): {}", fibonacci_number, fibonacci_number, fibonacci(fibonacci_number));
 
-  let rect1 = (50, 30);
+  let rect1 = Rectangle { length: 50, width: 30 };
   println!(
     "The area of the rectangle is {} square pixels",
-    area(rect1)
+    area(&rect1) // 이 함수의 목적은 소유권을 가져가는것이 아닌 빌림이기 때문에 참조자를 넘겨줌
   );
 }
 
@@ -33,6 +33,11 @@ fn fibonacci(n: i64) -> i64 {
   }
 }
 
-fn area(dimensions: (i32, i32)) -> i32 {
-  dimensions.0 * dimensions.1
+struct Rectangle {
+  length: i32,
+  width: i32,
+}
+
+fn area(rectangle: &Rectangle) -> i32 {
+  rectangle.length * rectangle.width
 }
