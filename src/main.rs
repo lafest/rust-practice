@@ -1,10 +1,19 @@
 fn main() {
-  let fahrenheit: f64 = 100.0;
-  let celsius: f64 = 36.5;
-  let fibonacci_number: i64 = 7;
+  let fahrenheit = 100.0;
   println!("fahrenheit: {} / converted: {}", fahrenheit, fahrenheit_to_celsius(fahrenheit));
+
+  let celsius = 36.5;
   println!("celsius: {} / converted: {}", celsius, celsius_to_fahrenheit(celsius));
-  println!("fibonacci_number: {} / fibonacci({}): {}", fibonacci_number, fibonacci_number, fibonacci(fibonacci_number))
+
+  let fibonacci_number = 7;
+  println!("fibonacci_number: {} / fibonacci({}): {}", fibonacci_number, fibonacci_number, fibonacci(fibonacci_number));
+
+  let length1 = 50;
+  let width1 = 30;
+  println!(
+    "The area of the rectangle is {} square pixels",
+    area(length1, width1)
+  );
 }
 
 fn celsius_to_fahrenheit(celsius: f64) -> f64 {
@@ -23,4 +32,8 @@ fn fibonacci(n: i64) -> i64 {
   } else {
     fibonacci(n - 1) + fibonacci(n - 2)
   }
+}
+
+fn area(length: i32, width: i32) -> i32 {
+  length * width
 }
