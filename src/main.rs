@@ -8,11 +8,10 @@ fn main() {
   let fibonacci_number = 7;
   println!("fibonacci_number: {} / fibonacci({}): {}", fibonacci_number, fibonacci_number, fibonacci(fibonacci_number));
 
-  let length1 = 50;
-  let width1 = 30;
+  let rect1 = (50, 30);
   println!(
     "The area of the rectangle is {} square pixels",
-    area(length1, width1)
+    area(rect1)
   );
 }
 
@@ -34,6 +33,6 @@ fn fibonacci(n: i64) -> i64 {
   }
 }
 
-fn area(length: i32, width: i32) -> i32 {
-  length * width
+fn area(dimensions: (i32, i32)) -> i32 {
+  dimensions.0 * dimensions.1
 }
